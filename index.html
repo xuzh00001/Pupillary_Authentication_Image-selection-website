@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Preference Selection</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Image Preference Task</p>
+        <h1>Image Preference Selection</h1>
+      </div>
+      <button id="restart-button" class="ghost-button hidden" type="button">Start Over</button>
+    </header>
+
+    <main>
+      <section id="start-screen" class="screen active">
+        <div class="hero-card">
+          <div class="hero-copy">
+            <p class="hero-kicker">Task Setup</p>
+            <h2>Browse 5 image categories one by one and choose your favorite image from each category.</h2>
+            <p class="hero-text">
+              You will first see the color images. After all selections are complete, the system will show the grayscale versions of your 5 chosen images. Please remember their grayscale appearance.
+            </p>
+          </div>
+
+          <div class="hero-panel">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <span class="stat-label">Categories</span>
+                <strong id="total-categories">5</strong>
+              </div>
+              <div class="stat-card">
+                <span class="stat-label">Images Per Category</span>
+                <strong id="images-per-category">20</strong>
+              </div>
+              <div class="stat-card">
+                <span class="stat-label">Final Memory Set</span>
+                <strong>5 Grayscale Images</strong>
+              </div>
+            </div>
+
+            <label class="field-label" for="participant-id">Participant ID (Optional)</label>
+            <input id="participant-id" class="text-input" type="text" placeholder="For example: P01">
+
+            <div class="instruction-list">
+              <p>How to use this page:</p>
+              <ul>
+                <li>Click Previous or Next to browse the images in order</li>
+                <li>Click Select Current Image to save your favorite image for this category</li>
+                <li>Only one final image can be kept for each category</li>
+                <li>You can also use the keyboard: arrow keys to browse and Enter to select</li>
+              </ul>
+            </div>
+
+            <button id="start-button" class="primary-button" type="button">Start Task</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="experiment-screen" class="screen">
+        <div class="experiment-layout">
+          <aside class="sidebar">
+            <div class="sidebar-card">
+              <p class="sidebar-title">Category Progress</p>
+              <div id="category-progress" class="category-progress"></div>
+            </div>
+
+            <div class="sidebar-card">
+              <p class="sidebar-title">Current Selection</p>
+              <div id="selection-preview" class="selection-preview empty">
+                <p>No image selected yet</p>
+              </div>
+            </div>
+
+            <div class="sidebar-card">
+              <p class="sidebar-title">Quick Reminder</p>
+              <p class="sidebar-note">Please browse the images in the current category before confirming your favorite one.</p>
+            </div>
+          </aside>
+
+          <section class="viewer-panel">
+            <div class="viewer-topbar">
+              <div>
+                <p id="category-step" class="eyebrow">Category 1 / 5</p>
+                <h2 id="category-title">Animal</h2>
+              </div>
+              <div class="counter-badge">
+                <span id="image-step">Image 1 / 20</span>
+              </div>
+            </div>
+
+            <div class="image-stage">
+              <button id="prev-button" class="nav-button" type="button" aria-label="Previous image">&lt;</button>
+              <figure class="image-card">
+                <img id="color-image" src="" alt="Current color image">
+                <figcaption>
+                  <span id="image-label">Image Name</span>
+                  <span id="image-id" class="image-meta">ID 1</span>
+                </figcaption>
+              </figure>
+              <button id="next-button" class="nav-button" type="button" aria-label="Next image">&gt;</button>
+            </div>
+
+            <div class="action-row">
+              <button id="select-button" class="primary-button" type="button">Select Current Image</button>
+              <button id="clear-selection-button" class="secondary-button" type="button">Clear Selection</button>
+              <button id="confirm-category-button" class="accent-button" type="button">Confirm Category and Continue</button>
+            </div>
+
+            <div id="thumbnail-strip" class="thumbnail-strip"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="summary-screen" class="screen">
+        <div class="summary-header">
+          <div>
+            <p class="eyebrow">Memory Phase</p>
+            <h2>Please memorize the 5 grayscale images below</h2>
+            <p id="summary-meta" class="summary-meta"></p>
+          </div>
+          <div class="summary-actions">
+            <button id="download-button" class="primary-button" type="button">Download Results (CSV)</button>
+          </div>
+        </div>
+
+        <section class="summary-editor">
+          <div class="summary-editor-header">
+            <p class="sidebar-title">Edit a Category</p>
+            <p class="summary-editor-note">Click a category name to go back and change your selection.</p>
+          </div>
+          <div id="summary-category-jump" class="summary-category-jump"></div>
+        </section>
+
+        <div id="summary-grid" class="summary-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./manifest.js?v=20260518-1"></script>
+  <script src="./app.js?v=20260518-1"></script>
+</body>
+</html>
+
+
